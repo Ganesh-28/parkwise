@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <div class="card entry-card">
+
+        <div class="card-header">
+            <h1>Vehicle Entry</h1>
+            <p>Register a vehicle and assign a parking slot.</p>
+        </div>
+
+        <form id="entryForm">
+
+            <div class="form-group">
+                <label for="vehicleNumber">
+                    Vehicle Number
+                </label>
+
+                <input
+                    type="text"
+                    id="vehicleNumber"
+                    name="vehicle_number"
+                    placeholder="KA 01 AB 1234"
+                    autocomplete="off"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleType">
+                    Vehicle Type
+                </label>
+
+                <select
+                    id="vehicleType"
+                    name="vehicle_type"
+                    required
+                >
+                    <option value="">Select vehicle type</option>
+                    <option value="2W">2-Wheeler</option>
+                    <option value="4W">4-Wheeler</option>
+                </select>
+            </div>
+
+            <button type="submit" class="primary-btn">
+                Generate Parking Ticket
+            </button>
+
+        </form>
+
+        <div id="entryMessage" class="message"></div>
+
+        <div id="ticketResult" class="ticket-result hidden">
+
+            <div class="success-icon">✓</div>
+
+            <h2>Parking Confirmed</h2>
+
+            <div class="ticket-details">
+
+                <div>
+                    <span>Ticket</span>
+                    <strong id="resultTicket"></strong>
+                </div>
+
+                <div>
+                    <span>Vehicle</span>
+                    <strong id="resultVehicle"></strong>
+                </div>
+
+                <div>
+                    <span>Type</span>
+                    <strong id="resultType"></strong>
+                </div>
+
+                <div class="slot-highlight">
+                    <span>Parking Slot</span>
+                    <strong id="resultSlot"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

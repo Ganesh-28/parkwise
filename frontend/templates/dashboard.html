@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div>
+            <h1>Parking Dashboard</h1>
+            <p>Live overview of the Parkwise parking lot.</p>
+        </div>
+
+        <button
+            type="button"
+            id="refreshDashboard"
+            class="btn btn-primary"
+        >
+            ↻ Refresh
+        </button>
+    </div>
+
+
+    <!-- Main Statistics -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-label">Total Slots</div>
+            <div class="stat-value" id="totalSlots">-</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Occupied</div>
+            <div class="stat-value" id="occupiedSlots">-</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Available</div>
+            <div class="stat-value" id="availableSlots">-</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Revenue</div>
+            <div class="stat-value revenue" id="totalRevenue">₹0</div>
+        </div>
+
+    </section>
+
+
+    <!-- Vehicle Statistics -->
+    <section class="vehicle-stats">
+
+        <div class="vehicle-stat-card">
+
+            <div class="vehicle-icon two-wheeler-icon">
+                🛵
+            </div>
+
+            <div>
+                <div class="vehicle-stat-label">
+                    2-Wheelers
+                </div>
+
+                <div
+                    class="vehicle-stat-value"
+                    id="twoWheelerOccupied"
+                >
+                    -
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="vehicle-stat-card">
+
+            <div class="vehicle-icon four-wheeler-icon">
+                🚗
+            </div>
+
+            <div>
+                <div class="vehicle-stat-label">
+                    4-Wheelers
+                </div>
+
+                <div
+                    class="vehicle-stat-value"
+                    id="fourWheelerOccupied"
+                >
+                    -
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="vehicle-stat-card">
+
+            <div class="vehicle-icon blocked-icon">
+                🚫
+            </div>
+
+            <div>
+                <div class="vehicle-stat-label">
+                    Blocked
+                </div>
+
+                <div
+                    class="vehicle-stat-value"
+                    id="blockedSlots"
+                >
+                    -
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+<section class="dashboard-card pending-card">
+
+    <div class="section-header pending-header">
+        <div>
+            <h2>Pending Tickets</h2>
+            <p>Vehicles currently inside the parking lot.</p>
+        </div>
+
+        <div class="pending-count" id="pendingCount">
+            0
+        </div>
+    </div>
+
+    <div class="table-container">
+
+        <table class="tickets-table pending-table">
+
+            <thead>
+                <tr>
+                    <th>Ticket</th>
+                    <th>Vehicle</th>
+                    <th>Type</th>
+                    <th>Slot</th>
+                    <th>Entry Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="pendingTickets">
+
+                <tr>
+                    <td colspan="6" class="empty-table">
+                        Loading pending tickets...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+    <!-- Parking Slots -->
+    <section class="dashboard-card">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Parking Slots</h2>
+                <p>Current slot availability</p>
+            </div>
+
+        </div>
+
+
+        <!-- Slot Grid -->
+        <div
+            id="slotGrid"
+            class="slot-grid"
+        >
+        </div>
+
+
+        <!-- Slot Legend -->
+        <div class="slot-legend">
+
+            <div class="legend-item">
+                <span class="legend-box available"></span>
+                <span>Available</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-box occupied"></span>
+                <span>Occupied</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-box blocked"></span>
+                <span>Blocked</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Recent Tickets -->
+    <section class="dashboard-card">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Recent Tickets</h2>
+                <p>Latest parking activity</p>
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table class="tickets-table">
+
+                <thead>
+                    <tr>
+                        <th>Ticket</th>
+                        <th>Vehicle</th>
+                        <th>Type</th>
+                        <th>Slot</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody id="recentTickets">
+
+                    <tr>
+                        <td colspan="6" class="empty-table">
+                            Loading parking activity...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
